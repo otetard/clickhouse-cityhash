@@ -27,7 +27,6 @@ jobs:
         env:
           CIBW_BUILD: 'cp3{9,10,11,12,13,14}-* pp3{9,10,11}-*'
           CIBW_ENABLE: 'pypy pypy-eol'
-          CIBW_BEFORE_BUILD: pip install cython
       - uses: ncipollo/release-action@v1
         name: Upload wheels
         if: ${{ github.ref_type == 'tag' }}
@@ -64,7 +63,6 @@ jobs:
         env:
           CIBW_BUILD: 'cp3{9,10,11,12,13,14}-* pp3{9,10,11}-*'
           CIBW_ENABLE: 'pypy pypy-eol'
-          CIBW_BEFORE_BUILD: pip install cython
           CIBW_ARCHS_MACOS: x86_64 arm64
       - uses: ncipollo/release-action@v1
         name: Upload wheels
@@ -150,7 +148,6 @@ jobs:
         env:
           CIBW_BUILD: 'cp3{9,10,11,12,13,14}-* pp3{9,10,11}-*'
           CIBW_ENABLE: 'pypy pypy-eol'
-          CIBW_BEFORE_BUILD: pip install cython
           CIBW_ARCHS: ${{ matrix.arch }}
       - uses: ncipollo/release-action@v1
         name: Upload wheels
