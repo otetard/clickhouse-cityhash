@@ -21,11 +21,12 @@ jobs:
           pip install --upgrade pip setuptools
           pip install cython cibuildwheel==$VERSION
         env:
-          VERSION: 2.22.0
+          VERSION: 3.2.1
       - name: Build wheels
         run: cibuildwheel --output-dir wheelhouse
         env:
-          CIBW_BUILD: 'cp3{9,10,11,12,13}-* pp3{9,10,11}-*'
+          CIBW_BUILD: 'cp3{9,10,11,12,13,14}-* pp3{9,10,11}-*'
+          CIBW_ENABLE: 'pypy pypy-eol'
       - uses: ncipollo/release-action@v1
         name: Upload wheels
         if: ${{ github.ref_type == 'tag' }}
@@ -56,11 +57,12 @@ jobs:
           pip install --upgrade pip setuptools
           pip install cython cibuildwheel==$VERSION
         env:
-          VERSION: 2.22.0
+          VERSION: 3.2.1
       - name: Build wheels
         run: cibuildwheel --output-dir wheelhouse
         env:
-          CIBW_BUILD: 'cp3{9,10,11,12,13}-* pp3{9,10,11}-*'
+          CIBW_BUILD: 'cp3{9,10,11,12,13,14}-* pp3{9,10,11}-*'
+          CIBW_ENABLE: 'pypy pypy-eol'
           CIBW_ARCHS_MACOS: x86_64 arm64
       - uses: ncipollo/release-action@v1
         name: Upload wheels
@@ -91,11 +93,13 @@ jobs:
         run: |
           pip install cibuildwheel==$env:VERSION
         env:
-          VERSION: 2.22.0
+          VERSION: 3.2.1
       - name: Build wheels
         run: cibuildwheel --output-dir wheelhouse
         env:
-          CIBW_BUILD: 'cp3{9,10,11,12,13}-* pp3{9,10,11}-*'
+          CIBW_BUILD: 'cp3{9,10,11,12,13,14}-* pp3{9,10,11}-*'
+          CIBW_ENABLE: 'pypy pypy-eol'
+          CIBW_BEFORE_BUILD: pip install cython
       - uses: ncipollo/release-action@v1
         name: Upload wheels
         if: ${{ github.ref_type == 'tag' }}
@@ -138,11 +142,12 @@ jobs:
           pip install --upgrade pip setuptools
           pip install cibuildwheel==$VERSION
         env:
-          VERSION: 2.22.0
+          VERSION: 3.2.1
       - name: Build wheels
         run: cibuildwheel --output-dir wheelhouse
         env:
-          CIBW_BUILD: 'cp3{9,10,11,12,13}-* pp3{9,10,11}-*'
+          CIBW_BUILD: 'cp3{9,10,11,12,13,14}-* pp3{9,10,11}-*'
+          CIBW_ENABLE: 'pypy pypy-eol'
           CIBW_ARCHS: ${{ matrix.arch }}
       - uses: ncipollo/release-action@v1
         name: Upload wheels
